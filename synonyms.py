@@ -34,7 +34,7 @@ def get_word_data(data, word):
         return_data = data["synonyms"][word]
     except:
         # falls das wort nicht gefunden wird
-        return_data = []
+        return_data = {"synonyms": []}
 
     return return_data
 

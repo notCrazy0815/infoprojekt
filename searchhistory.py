@@ -14,15 +14,23 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_SearchWindow(object):
     def setupUi(self, SearchWindow):
         SearchWindow.setObjectName("SearchWindow")
-        SearchWindow.resize(288, 455)
+        SearchWindow.resize(281, 411)
+        SearchWindow.setStyleSheet("background-color: #eee;\n"
+"color: black;")
         self.centralwidget = QtWidgets.QWidget(SearchWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.outputTa = QtWidgets.QTextEdit(self.centralwidget)
         self.outputTa.setGeometry(QtCore.QRect(10, 10, 261, 371))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        self.outputTa.setFont(font)
+        self.outputTa.setStyleSheet("border: none;\n"
+"color: black;\n"
+"background-color: #fff;")
         self.outputTa.setObjectName("outputTa")
         SearchWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(SearchWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 288, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 281, 21))
         self.menubar.setObjectName("menubar")
         self.menuDatei = QtWidgets.QMenu(self.menubar)
         self.menuDatei.setObjectName("menuDatei")

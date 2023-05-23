@@ -6,12 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>288</width>
-    <height>455</height>
+    <width>281</width>
+    <height>411</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Suchverlauf</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #eee;
+color: black;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTextEdit" name="outputTa">
@@ -23,6 +27,16 @@
       <height>371</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: none;
+color: black;
+background-color: #fff;</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -30,7 +44,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>288</width>
+     <width>281</width>
      <height>21</height>
     </rect>
    </property>

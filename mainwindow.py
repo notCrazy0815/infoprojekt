@@ -14,21 +14,51 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(279, 283)
+        MainWindow.resize(402, 441)
+        MainWindow.setStyleSheet("background-color: #eee;\n"
+"color: black;")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.searchButton = QtWidgets.QPushButton(self.centralwidget)
-        self.searchButton.setGeometry(QtCore.QRect(180, 10, 75, 23))
+        self.searchButton.setGeometry(QtCore.QRect(280, 10, 111, 31))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(8)
+        self.searchButton.setFont(font)
+        self.searchButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.searchButton.setStyleSheet("background-color: #0098fa;\n"
+"color: white;\n"
+"border-radius: 3px;\n"
+"cursor: pointer;")
         self.searchButton.setObjectName("searchButton")
         self.searchInput = QtWidgets.QLineEdit(self.centralwidget)
-        self.searchInput.setGeometry(QtCore.QRect(20, 10, 151, 20))
+        self.searchInput.setGeometry(QtCore.QRect(10, 10, 261, 31))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(11)
+        self.searchInput.setFont(font)
+        self.searchInput.setStyleSheet("background-color: #fff;\n"
+"color: black;\n"
+"border: none;\n"
+"padding-top: 3px;\n"
+"padding-bottom: 3px;\n"
+"padding-left: 8px;\n"
+"padding-right: 8px;\n"
+"border-radius: 15px;")
         self.searchInput.setObjectName("searchInput")
         self.outputTa = QtWidgets.QTextEdit(self.centralwidget)
-        self.outputTa.setGeometry(QtCore.QRect(20, 50, 241, 191))
+        self.outputTa.setGeometry(QtCore.QRect(10, 60, 381, 341))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(11)
+        self.outputTa.setFont(font)
+        self.outputTa.setStyleSheet("border: none;\n"
+"color: black;\n"
+"background-color: #fff;")
         self.outputTa.setObjectName("outputTa")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 279, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 402, 21))
         self.menubar.setObjectName("menubar")
         self.menuDatei = QtWidgets.QMenu(self.menubar)
         self.menuDatei.setObjectName("menuDatei")
@@ -53,8 +83,13 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Synonyms"))
         self.searchButton.setText(_translate("MainWindow", "Suchen"))
+        self.outputTa.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Arial\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'MS Shell Dlg 2\'; font-size:8.25pt;\"><br /></p></body></html>"))
         self.menuDatei.setTitle(_translate("MainWindow", "Datei"))
         self.actionSuchverlauf.setText(_translate("MainWindow", "Suchverlauf"))
         self.actionSchliessen.setText(_translate("MainWindow", "Schliessen"))

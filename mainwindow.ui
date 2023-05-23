@@ -6,22 +6,41 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>279</width>
-    <height>283</height>
+    <width>402</width>
+    <height>441</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Synonyms</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #eee;
+color: black;</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="searchButton">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>280</x>
       <y>10</y>
-      <width>75</width>
-      <height>23</height>
+      <width>111</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #0098fa;
+color: white;
+border-radius: 3px;
+cursor: pointer;</string>
     </property>
     <property name="text">
      <string>Suchen</string>
@@ -30,21 +49,55 @@
    <widget class="QLineEdit" name="searchInput">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>10</y>
-      <width>151</width>
-      <height>20</height>
+      <width>261</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #fff;
+color: black;
+border: none;
+padding-top: 3px;
+padding-bottom: 3px;
+padding-left: 8px;
+padding-right: 8px;
+border-radius: 15px;</string>
     </property>
    </widget>
    <widget class="QTextEdit" name="outputTa">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>50</y>
-      <width>241</width>
-      <height>191</height>
+      <x>10</x>
+      <y>60</y>
+      <width>381</width>
+      <height>341</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: none;
+color: black;
+background-color: #fff;</string>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8.25pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
   </widget>
@@ -53,7 +106,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>279</width>
+     <width>402</width>
      <height>21</height>
     </rect>
    </property>
@@ -120,8 +173,8 @@
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>139</x>
-     <y>141</y>
+     <x>-1</x>
+     <y>-1</y>
     </hint>
     <hint type="destinationlabel">
      <x>139</x>
