@@ -9,7 +9,7 @@ import search_history
 # blue #0098fa
 # red #ff6c4c
 
-# formatiert den output der synonyme
+# formatiert den Output der Synonyme
 def format_output(data):
     text = ""
     if len(data["synonyms"]) > 0:
@@ -21,7 +21,7 @@ def format_output(data):
     return text
 
 
-# formatiert den output des suchverlaufs
+# formatiert den Output des Suchverlaufs
 def format_history_output(data):
     text = ""
     i = len(data["search_history"]) - 1
@@ -32,9 +32,9 @@ def format_history_output(data):
     return text
 
 
-# suche synonyme + ausgabe
+# suche Synonyme + Ausgabe
 def search():
-    # suche
+    # Suche
     word = ui.searchInput.text()
 
     if word.replace(" ", "") == "":
@@ -44,23 +44,24 @@ def search():
     app.setOverrideCursor(Qt.WaitCursor)
     word_synonyms, search_word = synonyms.get_synonyms(word)
 
-    # ausgabe der synonyme
+    # Ausgabe der Synonyme
     ui.outputTa.setText(format_output(word_synonyms))
 
-    # falls rechtschreibfehler gefunden werden diese dann in der Suchleiste korrigiert
+    # falls Rechtschreibfehler gefunden werden, werden diese dann in der Suchleiste korrigiert
     if search_word != word:
         ui.searchInput.setText(search_word)
 
     app.restoreOverrideCursor()
 
 
+# Zeigt das Suchverlaufwindow
 def view_search_history():
     history = search_history.get_search_history()
     searchwindow.show()
     searchUi.outputTa.setText(format_history_output(history))
 
 
-# initieren des windows
+# initieren des Windows
 app = QApplication([])
 window = QMainWindow()
 searchwindow = QMainWindow()
@@ -70,7 +71,7 @@ ui.setupUi(window)
 searchUi = Ui_SearchWindow()
 searchUi.setupUi(searchwindow)
 
-# events
+# Events
 ui.searchButton.clicked.connect(search)
 ui.actionSuchverlauf.triggered.connect(view_search_history)
 
