@@ -1,25 +1,45 @@
-""" synonyms_formatter.py - formatiert synonyms.json, Ergebnis in synonyms_data.json """
-# nur einmalige verwendung
-
-# imports
 import json
+import os
 
-# zu formatierenden Text einlesen
-old_text = ""
+with open("data/synonyms.json", "r") as f:
+    data = f.read().split("\n")
 
-with open("data/synonyms.json", "r") as file:
-    old_text = file.read()
+    for i in range(len(data)):
+        data[i] = json.loads(data[i])
 
-file.close()
+    current_char = ""
+    current_char_data = []
 
-# formatieren
-old_text_rows = old_text.split("\n")
-synonyms_as_json = json.loads('{ "synonyms": {} }')
-for i in range(len(old_text_rows)):
-    word_data = json.loads(old_text_rows[i])
-    word = word_data["word"]
-    synonyms_as_json["synonyms"][word] = word_data
+    new_data = []
 
-# in neue Datei schreiben
-with open("data/synonyms_data.json", "w") as file:
-    json.dump(synonyms_as_json, file, indent=2)
+    for i in range(len(data)):
+        char = data[i]["word"][0].lower()
+
+        if current_char == "":
+            current_char = char
+            current_char_data.append(data[i])
+        elif current_char == char:
+            current_char_data.append(data[i])
+        else:
+            new_data.append({"char": current_char, "data": current_char_data})
+            current_char = char
+            current_char_data = [data[i]]
+
+    new_data.append({"char": current_char, "data": current_char_data})
+
+    for i in range(len(new_data)):
+        if not os.path.exists("data/synonyms/" + new_data[i]["char"]):
+            os.mkdir("data/synonyms/" + new_data[i]["char"])
+            with open("data/synonyms/" + new_data[i]["char"] + "/data.json", "w") as f:
+                f.write(json.dumps(new_data[i]["data"]))
+        else:
+            old_data = []
+            with open("data/synonyms/" + new_data[i]["char"] + "/data.json", "r") as f:
+                old_data = json.loads(f.read())
+
+            for j in range(len(new_data[i]["data"])):
+                old_data.append(new_data[i]["data"][j])
+
+            with open("data/synonyms/" + new_data[i]["char"] + "/data.json", "w") as f:
+                f.write(json.dumps(old_data, indent=4))
+

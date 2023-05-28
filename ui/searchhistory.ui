@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>281</width>
-    <height>411</height>
+    <height>417</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,24 +18,14 @@
 color: black;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTextEdit" name="outputTa">
+   <widget class="QListWidget" name="outputList">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>10</y>
-      <width>261</width>
+      <y>0</y>
+      <width>256</width>
       <height>371</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Arial</family>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border: none;
-color: black;
-background-color: #fff;</string>
     </property>
    </widget>
   </widget>
@@ -52,6 +42,8 @@ background-color: #fff;</string>
     <property name="title">
      <string>Datei</string>
     </property>
+    <addaction name="actionSuchverlauf_l_schen"/>
+    <addaction name="separator"/>
     <addaction name="actionSchliessen"/>
    </widget>
    <addaction name="menuDatei"/>
@@ -60,6 +52,11 @@ background-color: #fff;</string>
   <action name="actionSchliessen">
    <property name="text">
     <string>Schliessen</string>
+   </property>
+  </action>
+  <action name="actionSuchverlauf_l_schen">
+   <property name="text">
+    <string>Suchverlauf löschen</string>
    </property>
   </action>
  </widget>

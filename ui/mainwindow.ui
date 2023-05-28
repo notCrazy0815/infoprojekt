@@ -7,15 +7,20 @@
     <x>0</x>
     <y>0</y>
     <width>402</width>
-    <height>441</height>
+    <height>433</height>
    </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Arial</family>
+   </font>
   </property>
   <property name="windowTitle">
    <string>Synonyms</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #eee;
-color: black;</string>
+   <string notr="true">background-color: #000000;
+color: grey;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="searchButton">
@@ -62,14 +67,17 @@ cursor: pointer;</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #fff;
-color: black;
+     <string notr="true">background-color: #1c1c1e;
+color: #dcdcdc;
 border: none;
 padding-top: 3px;
 padding-bottom: 3px;
 padding-left: 8px;
 padding-right: 8px;
-border-radius: 15px;</string>
+border-radius: 3px;</string>
+    </property>
+    <property name="placeholderText">
+     <string>Suchwort eingeben</string>
     </property>
    </widget>
    <widget class="QTextEdit" name="outputTa">
@@ -89,8 +97,8 @@ border-radius: 15px;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">border: none;
-color: black;
-background-color: #fff;</string>
+color: #dcdcdc;
+background-color: #1c1c1e;</string>
     </property>
     <property name="html">
      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
