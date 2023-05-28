@@ -40,6 +40,8 @@ def get_word_data(data, word):
             for j in range(len(data[i]["synonyms"])):
                 return_data.append(data[i]["synonyms"][j])
 
+    return_data.sort()
+
     return return_data
 
 

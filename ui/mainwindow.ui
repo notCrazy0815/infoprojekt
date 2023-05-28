@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>402</width>
-    <height>433</height>
+    <height>459</height>
    </rect>
   </property>
   <property name="font">
@@ -19,8 +19,8 @@
    <string>Synonyms</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #000000;
-color: grey;</string>
+   <string notr="true">background-color: rgb(240,240,240);
+color: black;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="searchButton">
@@ -67,8 +67,7 @@ cursor: pointer;</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #1c1c1e;
-color: #dcdcdc;
+     <string notr="true">background-color: white;
 border: none;
 padding-top: 3px;
 padding-bottom: 3px;
@@ -80,32 +79,27 @@ border-radius: 3px;</string>
      <string>Suchwort eingeben</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="outputTa">
+   <widget class="QListWidget" name="outputList">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>60</y>
+      <y>50</y>
       <width>381</width>
       <height>341</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>Arial</family>
-      <pointsize>11</pointsize>
-     </font>
+   </widget>
+   <widget class="QLabel" name="consoleLbl">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>400</y>
+      <width>381</width>
+      <height>21</height>
+     </rect>
     </property>
-    <property name="styleSheet">
-     <string notr="true">border: none;
-color: #dcdcdc;
-background-color: #1c1c1e;</string>
-    </property>
-    <property name="html">
-     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8.25pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <property name="text">
+     <string>Doppelklicke ein Wort um es in die Zwischenablage zu kopieren.</string>
     </property>
    </widget>
   </widget>
