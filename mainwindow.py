@@ -68,6 +68,9 @@ class Ui_MainWindow(object):
         self.actionSuchverlauf.setObjectName("actionSuchverlauf")
         self.actionSchliessen = QtWidgets.QAction(MainWindow)
         self.actionSchliessen.setObjectName("actionSchliessen")
+        self.actionEinstellungen = QtWidgets.QAction(MainWindow)
+        self.actionEinstellungen.setObjectName("actionEinstellungen")
+        self.menuDatei.addAction(self.actionEinstellungen)
         self.menuDatei.addAction(self.actionSuchverlauf)
         self.menuDatei.addSeparator()
         self.menuDatei.addAction(self.actionSchliessen)
@@ -77,6 +80,7 @@ class Ui_MainWindow(object):
         self.searchButton.clicked.connect(MainWindow.update) # type: ignore
         self.actionSuchverlauf.triggered.connect(MainWindow.update) # type: ignore
         self.actionSchliessen.triggered.connect(MainWindow.close) # type: ignore
+        self.actionEinstellungen.triggered.connect(MainWindow.update) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -88,3 +92,4 @@ class Ui_MainWindow(object):
         self.menuDatei.setTitle(_translate("MainWindow", "Datei"))
         self.actionSuchverlauf.setText(_translate("MainWindow", "Suchverlauf"))
         self.actionSchliessen.setText(_translate("MainWindow", "Schliessen"))
+        self.actionEinstellungen.setText(_translate("MainWindow", "Einstellungen"))

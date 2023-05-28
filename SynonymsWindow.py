@@ -3,21 +3,26 @@ from PyQt5.QtWidgets import *
 from mainwindow import Ui_MainWindow
 import synonyms
 from HistoryWindow import AppHistory
+from SettingsWindow import AppSettings
+
 
 class AppMain(QMainWindow):
     NO_INPUT_TEXT = "Bitte geben Sie ein Wort ein"
     NO_SYNONYMS_TEXT = "Keine Synonyme gefunden"
 
+    config = None
+
     def __init__(self):
         super().__init__()
         self.setWindowIcon(QIcon("assets/logo.png"))
 
-        font = QFont()
-        font.setPointSize(12)
-        self.setFont(font)
-
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
+        self.history_window = AppHistory(self)
+        self.settings_window = AppSettings(self)
+
+        self.config = AppSettings(self).get_settings()
 
         self.ui.model = QStandardItemModel()
         completer = QCompleter(self.ui.model, self)
@@ -27,12 +32,11 @@ class AppMain(QMainWindow):
         self.ui.searchInput.returnPressed.connect(self.search)
         self.ui.searchButton.clicked.connect(self.search)
         self.ui.actionSuchverlauf.triggered.connect(self.view_search_history)
-
-        self.history_window = AppHistory(self)
-
-        # self.ui.model.appendRow(QStandardItem(entryItem))
+        self.ui.actionEinstellungen.triggered.connect(self.view_settings)
 
     def search(self):
+        self.config = self.settings_window.get_settings()
+
         # Suche
         word = self.ui.searchInput.text()
 
@@ -42,7 +46,7 @@ class AppMain(QMainWindow):
             self.ui.outputList.addItem(self.NO_INPUT_TEXT)
             return
 
-        word_synonyms, search_word = synonyms.get_synonyms(word, self.history_window)
+        word_synonyms, search_word = synonyms.get_synonyms(word, self.history_window, self.config["settings"]["auto_correct"], self.config["settings"]["search_history"])
 
         # Ausgabe der Synonyme
         for i in range(len(word_synonyms)):
@@ -58,23 +62,26 @@ class AppMain(QMainWindow):
             self.ui.searchInput.setText(search_word)
 
     def auto_complete(self):
-        text = self.ui.searchInput.text()
+        self.config = self.settings_window.get_settings()
 
-        if text.replace(" ", "") == "":
-            return
+        if self.config["settings"]["auto_complete"] > 0:
+            text = self.ui.searchInput.text()
 
-        data = synonyms.get_auto_complete(text)
+            if text.replace(" ", "") == "":
+                return
 
-        self.ui.model.clear()
+            data = synonyms.get_auto_complete(text)
 
-        words = []
-        for i in range(len(data)):
-            if data[i] not in words:
-                words.append(data[i])
-                self.ui.model.appendRow(QStandardItem(data[i]))
+            self.ui.model.clear()
 
-            if len(words) >= 3:
-                break
+            words = []
+            for i in range(len(data)):
+                if data[i] not in words:
+                    words.append(data[i])
+                    self.ui.model.appendRow(QStandardItem(data[i]))
+
+                if len(words) >= self.config["settings"]["auto_complete"]:
+                    break
 
     def copy_word(self, list_item):
         word = list_item.text()
@@ -90,3 +97,5 @@ class AppMain(QMainWindow):
     def view_search_history(self):
         self.history_window.view()
 
+    def view_settings(self):
+        self.settings_window.view()

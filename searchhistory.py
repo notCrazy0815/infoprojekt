@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_SearchWindow(object):
     def setupUi(self, SearchWindow):
         SearchWindow.setObjectName("SearchWindow")
-        SearchWindow.resize(281, 417)
+        SearchWindow.resize(281, 440)
         SearchWindow.setStyleSheet("background-color: #eee;\n"
 "color: black;")
         self.centralwidget = QtWidgets.QWidget(SearchWindow)
@@ -22,6 +22,9 @@ class Ui_SearchWindow(object):
         self.outputList = QtWidgets.QListWidget(self.centralwidget)
         self.outputList.setGeometry(QtCore.QRect(10, 0, 256, 371))
         self.outputList.setObjectName("outputList")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(10, 380, 251, 16))
+        self.label.setObjectName("label")
         SearchWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(SearchWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 281, 21))
@@ -48,6 +51,7 @@ class Ui_SearchWindow(object):
     def retranslateUi(self, SearchWindow):
         _translate = QtCore.QCoreApplication.translate
         SearchWindow.setWindowTitle(_translate("SearchWindow", "Suchverlauf"))
+        self.label.setText(_translate("SearchWindow", "Doppelklicke um eine Suche aufzurufen."))
         self.menuDatei.setTitle(_translate("SearchWindow", "Datei"))
         self.actionSchliessen.setText(_translate("SearchWindow", "Schliessen"))
         self.actionSuchverlauf_l_schen.setText(_translate("SearchWindow", "Suchverlauf löschen"))

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>281</width>
-    <height>417</height>
+    <height>440</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,6 +26,19 @@ color: black;</string>
       <width>256</width>
       <height>371</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>380</y>
+      <width>251</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Doppelklicke um eine Suche aufzurufen.</string>
     </property>
    </widget>
   </widget>

@@ -8,16 +8,18 @@ import spelling_mistakes
 
 
 # holen der Synonyme für ein Wort
-def get_synonyms(word, search_history):
+def get_synonyms(word, search_history, auto_correct, search_history_enabled):
     data = get_json_data(word[0])
     synonyms = get_word_data(data, word.lower())
 
-    # falls das wort falsch geschrieben ist und deswegen keine synonyme gefunden werden, wird nach synonymen für die korrigierte version geschaut
-    if len(synonyms) < 1:
-        word = spelling_mistakes.auto_correct(word).lower()
-        synonyms = get_word_data(data, word)
+    if auto_correct:
+        # falls das wort falsch geschrieben ist und deswegen keine synonyme gefunden werden, wird nach synonymen für die korrigierte version geschaut
+        if len(synonyms) < 1:
+            word = spelling_mistakes.auto_correct(word).lower()
+            synonyms = get_word_data(data, word)
 
-    search_history.add_search(word)
+    if search_history_enabled:
+        search_history.add_search(word)
 
     return synonyms, word
 

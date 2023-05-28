@@ -116,6 +116,7 @@ border-radius: 3px;</string>
     <property name="title">
      <string>Datei</string>
     </property>
+    <addaction name="actionEinstellungen"/>
     <addaction name="actionSuchverlauf"/>
     <addaction name="separator"/>
     <addaction name="actionSchliessen"/>
@@ -131,6 +132,11 @@ border-radius: 3px;</string>
   <action name="actionSchliessen">
    <property name="text">
     <string>Schliessen</string>
+   </property>
+  </action>
+  <action name="actionEinstellungen">
+   <property name="text">
+    <string>Einstellungen</string>
    </property>
   </action>
  </widget>
@@ -181,6 +187,22 @@ border-radius: 3px;</string>
     <hint type="destinationlabel">
      <x>139</x>
      <y>141</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionEinstellungen</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>229</y>
     </hint>
    </hints>
   </connection>
