@@ -30,37 +30,46 @@ def get_synonyms(word, search_history, auto_correct, search_history_enabled):
 
 # Daten aus der Datei laden
 def get_json_data(char):
-    if not os.path.exists(f"data/synonyms/{char}/data.json"):
-        return {"synonyms": []}
+    try:
+        if not os.path.exists(f"data/synonyms/{char}/data.json"):
+            return {"synonyms": []}
 
-    with open(f"data/synonyms/{char}/data.json", "r") as file:
-        return json.loads(file.read())
+        with open(f"data/synonyms/{char}/data.json", "r") as file:
+            return json.loads(file.read())
+    except Exception as e:
+        return {"synonyms": []}
 
 
 # Synonyme für das bestimmte gesuchte Wort laden
 def get_word_data(data, word):
-    return_data = []
+    try:
+        return_data = []
 
-    for i in range(len(data)):
-        if data[i]["word"] == word:
-            for j in range(len(data[i]["synonyms"])):
-                return_data.append(data[i]["synonyms"][j])
+        for i in range(len(data)):
+            if data[i]["word"] == word:
+                for j in range(len(data[i]["synonyms"])):
+                    return_data.append(data[i]["synonyms"][j])
 
-    return_data.sort()
+        return_data.sort()
 
-    return return_data
+        return return_data
+    except Exception as e:
+        return []
 
 
 # Autovervollständigung
 def get_auto_complete(text):
-    data = get_json_data(text[0])
+    try:
+        data = get_json_data(text[0])
 
-    return_data = []
+        return_data =[]
 
-    # Suche nach Wörtern, die mit dem Text beginnen
-    for i in range(len(data)):
-        if data[i]["word"].startswith(text):
-            return_data.append(data[i]["word"])
+        # Suche nach Wörtern, die mit dem Text beginnen
+        for i in range(len(data)):
+            if data[i]["word"].startswith(text):
+                return_data.append(data[i]["word"])
 
-    return return_data
+        return return_data
+    except Exception as e:
+        return []
 
