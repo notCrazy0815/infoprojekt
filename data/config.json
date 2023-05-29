@@ -1,7 +1,7 @@
 {
     "settings": {
-        "search_history": true,
-        "auto_correct": true,
-        "auto_complete": 10
+        "search_history": false,
+        "auto_correct": false,
+        "auto_complete": 4
     }
 }

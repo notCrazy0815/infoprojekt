@@ -93,7 +93,8 @@ class AppSettings(QMainWindow):
             else:
                 text += "Auto-Vervollständigung deaktiviert"
 
-        self.ui.consoleLbl.setText(text)
+        if text != "":
+            self.ui.consoleLbl.setText(text)
 
         with open("data/config.json", "w") as f:
             json.dump(settings_obj, f, indent=4)
