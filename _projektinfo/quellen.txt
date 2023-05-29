@@ -1,1 +1,0 @@
-https://github.com/zaibacu/thesaurus/blob/master/en_thesaurus.jsonl <- synonyms.json

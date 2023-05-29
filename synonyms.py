@@ -1,4 +1,6 @@
-""" synonyms.py - Schnittstelle um die Synonyme aus der Datei auszulesen """
+"""
+    synonyms.py - Schnittstelle um die Synonyme aus der Datei auszulesen
+"""
 
 # imports
 import json
@@ -13,18 +15,20 @@ def get_synonyms(word, search_history, auto_correct, search_history_enabled):
     synonyms = get_word_data(data, word.lower())
 
     if auto_correct:
-        # falls das wort falsch geschrieben ist und deswegen keine synonyme gefunden werden, wird nach synonymen für die korrigierte version geschaut
+        # falls das Wort falsch geschrieben ist und deswegen keine Synonyme gefunden werden, wird nach Synonymen für
+        # die korrigierte Version geschaut
         if len(synonyms) < 1:
             word = spelling_mistakes.auto_correct(word).lower()
             synonyms = get_word_data(data, word)
 
+    # Wenn Suchverlauf aktiviert ist, füge diese Suche hinzu
     if search_history_enabled:
         search_history.add_search(word)
 
     return synonyms, word
 
 
-# Data aus der Datei holen
+# Daten aus der Datei laden
 def get_json_data(char):
     if not os.path.exists(f"data/synonyms/{char}/data.json"):
         return {"synonyms": []}
@@ -33,7 +37,7 @@ def get_json_data(char):
         return json.loads(file.read())
 
 
-# Synonyme für das bestimmte gesuchte Wort holen
+# Synonyme für das bestimmte gesuchte Wort laden
 def get_word_data(data, word):
     return_data = []
 
@@ -47,11 +51,13 @@ def get_word_data(data, word):
     return return_data
 
 
+# Autovervollständigung
 def get_auto_complete(text):
     data = get_json_data(text[0])
 
     return_data = []
 
+    # Suche nach Wörtern, die mit dem Text beginnen
     for i in range(len(data)):
         if data[i]["word"].startswith(text):
             return_data.append(data[i]["word"])
