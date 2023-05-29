@@ -105,10 +105,13 @@ class AppMain(QMainWindow):
             for i in range(len(data)):
                 if data[i] not in words:
                     words.append(data[i])
+
                     self.ui.model.appendRow(QStandardItem(data[i]))
+
 
                 if len(words) >= self.config["settings"]["auto_complete"]:
                     break
+
 
     # Kopieren eines Synonyms
     def copy_word(self, list_item):
