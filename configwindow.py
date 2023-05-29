@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(450, 226)
+        MainWindow.resize(450, 276)
         MainWindow.setStyleSheet("background-color: rgb(240,240,240);\n"
 "color: black;")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -66,6 +66,10 @@ class Ui_MainWindow(object):
 "border-radius: 3px;\n"
 "cursor: pointer;")
         self.anwendenBtn.setObjectName("anwendenBtn")
+        self.consoleLbl = QtWidgets.QLabel(self.centralwidget)
+        self.consoleLbl.setGeometry(QtCore.QRect(30, 210, 381, 16))
+        self.consoleLbl.setText("")
+        self.consoleLbl.setObjectName("consoleLbl")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 450, 21))

@@ -49,6 +49,8 @@ class AppSettings(QMainWindow):
     # Speichert die Einstellungen
     def save_settings(self):
         # Prüfen, ob eingegebene Anzahl der Vervollständigungsvorschläge gültig ist
+        old_settings = self.get_settings()
+
         try:
             auto_complete = int(self.ui.completeInput.text())
 
@@ -74,8 +76,29 @@ class AppSettings(QMainWindow):
             }
         }
 
+        text = ""
+        if old_settings["settings"]["search_history"] != settings_obj["settings"]["search_history"]:
+            if settings_obj["settings"]["search_history"]:
+                text += "Suchverlauf aktiviert"
+            else:
+                text += "Suchverlauf deaktiviert"
+        elif old_settings["settings"]["auto_correct"] != settings_obj["settings"]["auto_correct"]:
+            if settings_obj["settings"]["auto_correct"]:
+                text += "Auto-Korrektur aktiviert"
+            else:
+                text += "Auto-Korrektur deaktiviert"
+        elif old_settings["settings"]["auto_complete"] != settings_obj["settings"]["auto_complete"]:
+            if settings_obj["settings"]["auto_complete"] > 0:
+                text += f"Auto-Vervollständigung aktiviert mit {settings_obj['settings']['auto_complete']} Vorschlägen"
+            else:
+                text += "Auto-Vervollständigung deaktiviert"
+
+        self.ui.consoleLbl.setText(text)
+
         with open("data/config.json", "w") as f:
             json.dump(settings_obj, f, indent=4)
+
+
 
     # Anzeigen des Windows
     def view(self):
@@ -85,6 +108,8 @@ class AppSettings(QMainWindow):
         self.ui.correctCheck.setChecked(settings["settings"]["auto_correct"])
         self.ui.historyCheck.setChecked(settings["settings"]["search_history"])
         self.ui.completeInput.setText(str(settings["settings"]["auto_complete"]))
+
+        self.ui.consoleLbl.setText("")
 
         self.show()
 
