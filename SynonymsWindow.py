@@ -64,7 +64,9 @@ class AppMain(QMainWindow):
             return
 
         # Laden der Synonyme
-        word_synonyms, search_word = synonyms.get_synonyms(word, self.history_window, self.config["settings"]["auto_correct"], self.config["settings"]["search_history"])
+        word_synonyms, search_word = synonyms.get_synonyms(word, self.history_window,
+                                                           self.config["settings"]["auto_correct"],
+                                                           self.config["settings"]["search_history"])
 
         # Ausgabe der Synonyme
         for i in range(len(word_synonyms)):
@@ -108,10 +110,8 @@ class AppMain(QMainWindow):
 
                     self.ui.model.appendRow(QStandardItem(data[i]))
 
-
                 if len(words) >= self.config["settings"]["auto_complete"]:
                     break
-
 
     # Kopieren eines Synonyms
     def copy_word(self, list_item):

@@ -76,6 +76,7 @@ class AppSettings(QMainWindow):
             }
         }
 
+        # Anzeigen der Änderungen
         text = ""
         if old_settings["settings"]["search_history"] != settings_obj["settings"]["search_history"]:
             if settings_obj["settings"]["search_history"]:
@@ -98,8 +99,6 @@ class AppSettings(QMainWindow):
 
         with open("data/config.json", "w") as f:
             json.dump(settings_obj, f, indent=4)
-
-
 
     # Anzeigen des Windows
     def view(self):
