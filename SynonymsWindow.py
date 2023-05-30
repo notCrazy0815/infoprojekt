@@ -5,6 +5,8 @@
 # Imports
 from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import *
+import webbrowser
+import os
 from mainwindow import Ui_MainWindow
 import synonyms
 from HistoryWindow import AppHistory
@@ -46,6 +48,7 @@ class AppMain(QMainWindow):
         self.ui.searchButton.clicked.connect(self.search)
         self.ui.actionSuchverlauf.triggered.connect(self.view_search_history)
         self.ui.actionEinstellungen.triggered.connect(self.view_settings)
+        self.ui.actionAnleitung.triggered.connect(self.view_help)
 
     # Suche Synonyme
     def search(self):
@@ -136,3 +139,10 @@ class AppMain(QMainWindow):
     # Zeigt das Einstellungswindow
     def view_settings(self):
         self.settings_window.view()
+
+    # Öffnet die Anleitung
+    def view_help(self):
+        # Laden des Pfades zur Anleitung
+        path = os.path.realpath("assets/anleitung.pdf")
+        # Öffnen der Anleitung
+        webbrowser.open_new(path)

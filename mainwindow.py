@@ -60,6 +60,8 @@ class Ui_MainWindow(object):
         self.menubar.setObjectName("menubar")
         self.menuDatei = QtWidgets.QMenu(self.menubar)
         self.menuDatei.setObjectName("menuDatei")
+        self.menuHilfe = QtWidgets.QMenu(self.menubar)
+        self.menuHilfe.setObjectName("menuHilfe")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -70,17 +72,22 @@ class Ui_MainWindow(object):
         self.actionSchliessen.setObjectName("actionSchliessen")
         self.actionEinstellungen = QtWidgets.QAction(MainWindow)
         self.actionEinstellungen.setObjectName("actionEinstellungen")
+        self.actionAnleitung = QtWidgets.QAction(MainWindow)
+        self.actionAnleitung.setObjectName("actionAnleitung")
         self.menuDatei.addAction(self.actionEinstellungen)
         self.menuDatei.addAction(self.actionSuchverlauf)
         self.menuDatei.addSeparator()
         self.menuDatei.addAction(self.actionSchliessen)
+        self.menuHilfe.addAction(self.actionAnleitung)
         self.menubar.addAction(self.menuDatei.menuAction())
+        self.menubar.addAction(self.menuHilfe.menuAction())
 
         self.retranslateUi(MainWindow)
         self.searchButton.clicked.connect(MainWindow.update) # type: ignore
         self.actionSuchverlauf.triggered.connect(MainWindow.update) # type: ignore
         self.actionSchliessen.triggered.connect(MainWindow.close) # type: ignore
         self.actionEinstellungen.triggered.connect(MainWindow.update) # type: ignore
+        self.actionAnleitung.triggered.connect(MainWindow.update) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -90,6 +97,8 @@ class Ui_MainWindow(object):
         self.searchInput.setPlaceholderText(_translate("MainWindow", "Suchwort eingeben"))
         self.consoleLbl.setText(_translate("MainWindow", "Doppelklicke ein Wort um es in die Zwischenablage zu kopieren."))
         self.menuDatei.setTitle(_translate("MainWindow", "Datei"))
+        self.menuHilfe.setTitle(_translate("MainWindow", "Hilfe"))
         self.actionSuchverlauf.setText(_translate("MainWindow", "Suchverlauf"))
         self.actionSchliessen.setText(_translate("MainWindow", "Schliessen"))
         self.actionEinstellungen.setText(_translate("MainWindow", "Einstellungen"))
+        self.actionAnleitung.setText(_translate("MainWindow", "Anleitung"))
