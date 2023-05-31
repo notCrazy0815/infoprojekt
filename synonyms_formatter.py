@@ -1,6 +1,7 @@
 """
     synonyms_formatter.py - Formatiert die Quelle (data/synonyms.json) in einzelne Dateien für jedes Zeichen,
-    dient nur für uns, wäre später nicht mit im Projekt enthalten
+    dient nur für uns, wäre später nicht mit im Projekt enthalten, die Quelle wäre später auch nicht
+    im Projekt enthalten, da die Daten aus dem Ordner data/synonyms/ kommen
 """
 
 # imports
