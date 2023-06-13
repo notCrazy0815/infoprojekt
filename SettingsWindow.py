@@ -1,8 +1,3 @@
-"""
-    SettingsWindow.py - Einstellungen anzeigen und ändern
-"""
-
-# Imports
 import json
 import os
 
@@ -16,24 +11,17 @@ class AppSettings(QMainWindow):
     SynonymsWindow = None
 
     def __init__(self, synonyms_window):
-        # Initialisierung des Fensters
         super().__init__()
 
-        # Icon setzen
         self.setWindowIcon(QIcon("assets/logo.png"))
-
         self.SynonymsWindow = synonyms_window
-
-        # UI laden
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        # Events
         self.ui.correctCheck.stateChanged.connect(self.save_settings)
         self.ui.historyCheck.stateChanged.connect(self.save_settings)
         self.ui.anwendenBtn.clicked.connect(self.save_settings)
 
-    # Erstellt die Einstellungen-Datei
     def init_settings(self):
         settings_obj = {
             "settings": {
@@ -46,28 +34,22 @@ class AppSettings(QMainWindow):
         with open("data/config.json", "w") as f:
             json.dump(settings_obj, f, indent=4)
 
-    # Speichert die Einstellungen
     def save_settings(self):
-        # Prüfen, ob eingegebene Anzahl der Vervollständigungsvorschläge gültig ist
         old_settings = self.get_settings()
 
         try:
             auto_complete = int(self.ui.completeInput.text())
 
-            # Maximal 10, minimal 0
             if auto_complete < 0:
                 auto_complete = 0
 
             if auto_complete > 10:
                 auto_complete = 10
         except ValueError:
-            # Vorbelegung 3, falls Eingabe keine Zahl ist
             auto_complete = 3
 
-        # Setzen der evtl. überarbeiteten Eingabe
         self.ui.completeInput.setText(str(auto_complete))
 
-        # Speichern der Einstellungen
         settings_obj = {
             "settings": {
                 "search_history": self.ui.historyCheck.isChecked(),
@@ -76,7 +58,6 @@ class AppSettings(QMainWindow):
             }
         }
 
-        # Anzeigen der Änderungen
         text = ""
         if old_settings["settings"]["search_history"] != settings_obj["settings"]["search_history"]:
             if settings_obj["settings"]["search_history"]:
@@ -100,11 +81,9 @@ class AppSettings(QMainWindow):
         with open("data/config.json", "w") as f:
             json.dump(settings_obj, f, indent=4)
 
-    # Anzeigen des Windows
     def view(self):
         settings = self.get_settings()
 
-        # Anzeigen der Einstellungen
         self.ui.correctCheck.setChecked(settings["settings"]["auto_correct"])
         self.ui.historyCheck.setChecked(settings["settings"]["search_history"])
         self.ui.completeInput.setText(str(settings["settings"]["auto_complete"]))
@@ -113,14 +92,11 @@ class AppSettings(QMainWindow):
 
         self.show()
 
-    # Laden der Einstellungen
     def get_settings(self):
         if os.path.exists("data/config.json"):
-            # Datei existiert
             with open("data/config.json", "r") as f:
                 settings = json.load(f)
         else:
-            # Datei existiert nicht
             self.init_settings()
             with open("data/config.json", "r") as f:
                 settings = json.load(f)
